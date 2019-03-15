@@ -107,7 +107,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 const port = process.env.PORT || 4000
-var userid = "";
+// var userid = "";
 console.log("****port***" + port);
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -119,14 +119,14 @@ app.post('/webhook', (req, res) => {
     var sender = req.body.events[0].source.userId;
     console.log("-----text----" + text);
     // console.log("-----reply_token----" + reply_token);
-    server();
+    // server();
     if (text == "a") {
         // console.log("-----text----" + text);
         reply(sender, text);
         // PushMessage();
     }
     else {
-        PushMessage(userid);
+        PushMessage();
     }
     // var text = "88";
     // var userId = "U93f0ab5384c81496cb14b0de52af58e9";
@@ -138,9 +138,9 @@ app.post('/webhook', (req, res) => {
 })
 app.listen(port)
 console.log("****88***" + port);
-function PushMessage(userid) {
+function PushMessage() {
     let data = {
-        to: userid,
+        to: 'U164d3cc6875a1c39f0ef0d2f40edf2a4',
         messages: [
             {
                 "type": "text",
@@ -152,7 +152,7 @@ function PushMessage(userid) {
     request({
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
+            'Authorization': 'Bearer {M9tAyRc6RQCCq0gJ7He0lZV9LrUYz/+7IqBgIdGGWuMBcQpmkxxlD2ljDWt9lYaJ7U4+mtwzjznLHaV/LDPXlzx4StUN5Rpkxht7x+K1oMiFjC78d5S23B77E0zzeaF1E4TTl3afJr5AA8wMgyQmhAdB04t89/1O/w1cDnyilFU=}'
         },
         url: 'https://api.line.me/v2/bot/message/push',
         method: 'POST',
@@ -182,7 +182,7 @@ function reply(sender, text) {
     request({
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
+            'Authorization': 'Bearer {M9tAyRc6RQCCq0gJ7He0lZV9LrUYz/+7IqBgIdGGWuMBcQpmkxxlD2ljDWt9lYaJ7U4+mtwzjznLHaV/LDPXlzx4StUN5Rpkxht7x+K1oMiFjC78d5S23B77E0zzeaF1E4TTl3afJr5AA8wMgyQmhAdB04t89/1O/w1cDnyilFU=}'
         },
         url: 'https://api.line.me/v2/bot/message/push',
         method: 'POST',
