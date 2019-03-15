@@ -9,7 +9,8 @@ app.use(bodyParser.json())
 app.post('/webhook', (req, res) => {
     var msgtxt = req.body.events[0].message.text;
     var text = msgtxt.toUpperCase();
-    var sender = req.body.events[0].source.userId;
+    // var sender = req.body.events[0].source.userId;
+    var sender = 'U164d3cc6875a1c39f0ef0d2f40edf2a4';
     var replyToken = req.body.events[0].replyToken;
     var timestamp = req.body.events[0].timestamp;
     var message = req.body.events[0].message.id;
