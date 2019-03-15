@@ -196,36 +196,36 @@ function reply(sender, text) {
 }
 
 function server() {
-    var sql = require("mssql");
+    // var sql = require("mssql");
 
-    // config for your database
-    var config = {
-        user: 'sa',
-        password: 'a@12345',
-        server: 'localhost',
-        database: 'linebot'
-    };
+    // // config for your database
+    // var config = {
+    //     user: 'sa',
+    //     password: 'a@12345',
+    //     server: 'localhost',
+    //     database: 'linebot'
+    // };
 
-    // connect to your database
-    sql.connect(config, function (err) {
+    // // connect to your database
+    // sql.connect(config, function (err) {
 
-        if (err) console.log(err);
+    //     if (err) console.log(err);
 
-        // create Request object
-        var request = new sql.Request();
+    //     // create Request object
+    //     var request = new sql.Request();
 
-        // query to the database and get the records
-        request.query('select * from lineuser', function (err, recordset) {
+    //     // query to the database and get the records
+    //     request.query('select * from lineuser', function (err, recordset) {
 
-            if (err) console.log(err)
+    //         if (err) console.log(err)
 
-            // send records as a response
-            // res.send(recordset);
-            const response = recordset;
-            // res.send(response.recordset[0].userid);
-            userid = response.recordset[0].userid;
-        });
-    });
+    //         // send records as a response
+    //         // res.send(recordset);
+    //         const response = recordset;
+    //         // res.send(response.recordset[0].userid);
+    //         userid = response.recordset[0].userid;
+    //     });
+    // });
 }
 
 
