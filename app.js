@@ -112,39 +112,6 @@ console.log("****port***" + port);
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.get('/', function (req, res) {
-
-    var sql = require("mssql");
-
-    // config for your database
-    var config = {
-        user: 'sa',
-        password: 'a@12345',
-        server: 'localhost',
-        database: 'linebot'
-    };
-
-    // connect to your database
-    sql.connect(config, function (err) {
-
-        if (err) console.log(err);
-
-        // create Request object
-        var request = new sql.Request();
-
-        // query to the database and get the records
-        request.query('select * from lineuser', function (err, recordset) {
-
-            if (err) console.log(err)
-
-            // send records as a response
-            // res.send(recordset);
-            const response = recordset;
-            // res.send(response.recordset[0].userid);
-            userid = response.recordset[0].userid;
-        });
-    });
-});
 
 app.post('/webhook', (req, res) => {
     var text = req.body.events[0].message.text
@@ -152,6 +119,7 @@ app.post('/webhook', (req, res) => {
     var sender = req.body.events[0].source.userId;
     console.log("-----text----" + text);
     // console.log("-----reply_token----" + reply_token);
+    server();
     if (text == "a") {
         // console.log("-----text----" + text);
         reply(sender, text);
@@ -172,8 +140,8 @@ app.listen(port)
 console.log("****88***" + port);
 function PushMessage(userid) {
     let data = {
-        "to": userid,
-        "messages": [
+        to: userid,
+        messages: [
             {
                 "type": "text",
                 "text": "Music"
@@ -225,6 +193,39 @@ function reply(sender, text) {
         if (res) console.log('success')
         if (body) console.log(body)
     })
+}
+
+function server() {
+    var sql = require("mssql");
+
+    // config for your database
+    var config = {
+        user: 'sa',
+        password: 'a@12345',
+        server: 'localhost',
+        database: 'linebot'
+    };
+
+    // connect to your database
+    sql.connect(config, function (err) {
+
+        if (err) console.log(err);
+
+        // create Request object
+        var request = new sql.Request();
+
+        // query to the database and get the records
+        request.query('select * from lineuser', function (err, recordset) {
+
+            if (err) console.log(err)
+
+            // send records as a response
+            // res.send(recordset);
+            const response = recordset;
+            // res.send(response.recordset[0].userid);
+            userid = response.recordset[0].userid;
+        });
+    });
 }
 
 
