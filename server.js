@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
     var config = {
         user: 'sa',
         password: 'a@12345',
-        server: 'localhost',
+        server: '10.11.2.89',
         database: 'linebot'
     };
 
