@@ -136,6 +136,7 @@ app.get('/', function (req, res) {
         request.query('select * from lineuser', function (err, recordset) {
 
             if (err) console.log(err)
+
             // send records as a response
             // res.send(recordset);
             const response = recordset;
@@ -147,12 +148,13 @@ app.get('/', function (req, res) {
 
 app.post('/webhook', (req, res) => {
     var text = req.body.events[0].message.text
-    let reply_token = req.body.events[0].replyToken
+    // let reply_token = req.body.events[0].replyToken
+    var sender = req.body.events[0].source.userId;
     console.log("-----text----" + text);
-    console.log("-----reply_token----" + reply_token);
+    // console.log("-----reply_token----" + reply_token);
     if (text == "a") {
         // console.log("-----text----" + text);
-        reply(reply_token);
+        reply(sender, text);
         // PushMessage();
     }
     else {
@@ -168,7 +170,6 @@ app.post('/webhook', (req, res) => {
 })
 app.listen(port)
 console.log("****88***" + port);
-
 function PushMessage(userid) {
     let data = {
         "to": userid,
@@ -183,7 +184,7 @@ function PushMessage(userid) {
     request({
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer {M9tAyRc6RQCCq0gJ7He0lZV9LrUYz/+7IqBgIdGGWuMBcQpmkxxlD2ljDWt9lYaJ7U4+mtwzjznLHaV/LDPXlzx4StUN5Rpkxht7x+K1oMiFjC78d5S23B77E0zzeaF1E4TTl3afJr5AA8wMgyQmhAdB04t89/1O/w1cDnyilFU=}'
+            'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
         },
         url: 'https://api.line.me/v2/bot/message/push',
         method: 'POST',
@@ -213,7 +214,7 @@ function reply(sender, text) {
     request({
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer {M9tAyRc6RQCCq0gJ7He0lZV9LrUYz/+7IqBgIdGGWuMBcQpmkxxlD2ljDWt9lYaJ7U4+mtwzjznLHaV/LDPXlzx4StUN5Rpkxht7x+K1oMiFjC78d5S23B77E0zzeaF1E4TTl3afJr5AA8wMgyQmhAdB04t89/1O/w1cDnyilFU=}'
+            'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
         },
         url: 'https://api.line.me/v2/bot/message/push',
         method: 'POST',
