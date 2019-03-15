@@ -168,13 +168,14 @@ app.post('/webhook', (req, res) => {
 })
 app.listen(port)
 console.log("****88***" + port);
+
 function PushMessage(userid) {
     let data = {
-        to: userid,
-        messages: [
+        "to": userid,
+        "messages": [
             {
                 "type": "text",
-                "text": "Music bnk48"
+                "text": "Music"
             }
         ]
     }
@@ -212,7 +213,7 @@ function reply(sender, text) {
     request({
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
+            'Authorization': 'Bearer {M9tAyRc6RQCCq0gJ7He0lZV9LrUYz/+7IqBgIdGGWuMBcQpmkxxlD2ljDWt9lYaJ7U4+mtwzjznLHaV/LDPXlzx4StUN5Rpkxht7x+K1oMiFjC78d5S23B77E0zzeaF1E4TTl3afJr5AA8wMgyQmhAdB04t89/1O/w1cDnyilFU=}'
         },
         url: 'https://api.line.me/v2/bot/message/push',
         method: 'POST',
@@ -224,3 +225,5 @@ function reply(sender, text) {
         if (body) console.log(body)
     })
 }
+
+
