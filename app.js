@@ -234,7 +234,7 @@ app.get('/sender', function (req, res) {
     res.sendfile('public/send.html');
 });
 
-app.post('/send_save', function (req, res) {
+app.get('/send_save', function (req, res) {
     console.log(req.body.id)
     console.log(req.body.title);
     console.log(req.body.content);
