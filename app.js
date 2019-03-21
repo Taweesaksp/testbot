@@ -196,36 +196,52 @@ function reply(sender, text) {
 }
 
 function server() {
-    // var sql = require("mssql");
+    var sql = require("mssql");
 
-    // // config for your database
-    // var config = {
-    //     user: 'sa',
-    //     password: 'a@12345',
-    //     server: 'localhost',
-    //     database: 'linebot'
-    // };
+    // config for your database
+    var config = {
+        user: 'sa',
+        password: 'a@12345',
+        server: 'localhost',
+        database: 'linebot'
+    };
 
-    // // connect to your database
-    // sql.connect(config, function (err) {
+    // connect to your database
+    sql.connect(config, function (err) {
 
-    //     if (err) console.log(err);
+        if (err) console.log(err);
 
-    //     // create Request object
-    //     var request = new sql.Request();
+        // create Request object
+        var request = new sql.Request();
 
-    //     // query to the database and get the records
-    //     request.query('select * from lineuser', function (err, recordset) {
+        // query to the database and get the records
+        request.query('select * from lineuser', function (err, recordset) {
 
-    //         if (err) console.log(err)
+            if (err) console.log(err)
 
-    //         // send records as a response
-    //         // res.send(recordset);
-    //         const response = recordset;
-    //         // res.send(response.recordset[0].userid);
-    //         userid = response.recordset[0].userid;
-    //     });
-    // });
+            // send records as a response
+            // res.send(recordset);
+            const response = recordset;
+            // res.send(response.recordset[0].userid);
+            userid = response.recordset[0].userid;
+        });
+    });
 }
 
+var db = require('./db');
+
+app.get('/sender', function (req, res) {
+    res.sendfile('public/send.html');
+});
+
+app.post('/send_save', function (req, res) {
+    console.log(req.body.id)
+    console.log(req.body.title);
+    console.log(req.body.content);
+    console.log("music");
+    res.contentType('json');
+    res.send({ some: JSON.stringify({ response: 'json' }) });
+});
+
+app.listen(3000);
 
