@@ -228,7 +228,7 @@ function server() {
     });
 }
 
-var db = require('./db');
+// var db = require('./db');
 
 app.get('/sender', function (req, res) {
     res.sendfile('public/send.html');
