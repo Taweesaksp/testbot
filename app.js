@@ -102,146 +102,183 @@
 //     console.log('run at port', app.get('port'))
 // })
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const request = require('request')
-const app = express()
-const port = process.env.PORT || 4000
-// var userid = "";
-console.log("****port***" + port);
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+// const express = require('express')
+// const bodyParser = require('body-parser')
+// const request = require('request')
+// const app = express()
+// const port = process.env.PORT || 4000
+// // var userid = "";
+// console.log("****port***" + port);
+// app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.json())
 
 
-app.post('/webhook', (req, res) => {
-    var text = req.body.events[0].message.text
-    // let reply_token = req.body.events[0].replyToken
-    var sender = req.body.events[0].source.userId;
-    console.log("-----text----" + text);
-    // console.log("-----reply_token----" + reply_token);
-    // server();
-    if (text == "a") {
-        // console.log("-----text----" + text);
-        reply(sender, text);
-        // PushMessage();
-    }
-    else {
-        PushMessage();
-    }
-    // var text = "88";
-    // var userId = "U93f0ab5384c81496cb14b0de52af58e9";
-    // let reply_token = req.body.events[0].replyToken
-    // let msg = "99"
+// app.post('/webhook', (req, res) => {
+//     var text = req.body.events[0].message.text
+//     // let reply_token = req.body.events[0].replyToken
+//     var sender = req.body.events[0].source.userId;
+//     console.log("-----text----" + text);
+//     // console.log("-----reply_token----" + reply_token);
+//     // server();
+//     if (text == "a") {
+//         // console.log("-----text----" + text);
+//         reply(sender, text);
+//         // PushMessage();
+//     }
+//     else {
+//         PushMessage();
+//     }
+//     // var text = "88";
+//     // var userId = "U93f0ab5384c81496cb14b0de52af58e9";
+//     // let reply_token = req.body.events[0].replyToken
+//     // let msg = "99"
 
-    res.sendStatus(200)
+//     res.sendStatus(200)
 
+// })
+// app.listen(port)
+// console.log("****88***" + port);
+// function PushMessage() {
+//     let data = {
+//         to: 'U164d3cc6875a1c39f0ef0d2f40edf2a4',
+//         messages: [
+//             {
+//                 "type": "text",
+//                 "text": "Music"
+//             }
+//         ]
+//     }
+
+//     request({
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': 'Bearer {M9tAyRc6RQCCq0gJ7He0lZV9LrUYz/+7IqBgIdGGWuMBcQpmkxxlD2ljDWt9lYaJ7U4+mtwzjznLHaV/LDPXlzx4StUN5Rpkxht7x+K1oMiFjC78d5S23B77E0zzeaF1E4TTl3afJr5AA8wMgyQmhAdB04t89/1O/w1cDnyilFU=}'
+//         },
+//         url: 'https://api.line.me/v2/bot/message/push',
+//         method: 'POST',
+//         body: data,
+//         json: true
+//     }, function (err, res, body) {
+//         if (err) console.log('error')
+//         if (res) console.log('success')
+//         if (body) console.log(body)
+//     })
+// }
+
+// function reply(sender, text) {
+//     console.log("-----in--1--");
+
+//     let data = {
+//         to: sender,
+//         messages: [
+//             {
+//                 "type": "text",
+//                 "text": text
+//             }
+//         ]
+//     }
+
+//     console.log("-----in--2--");
+//     request({
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': 'Bearer {M9tAyRc6RQCCq0gJ7He0lZV9LrUYz/+7IqBgIdGGWuMBcQpmkxxlD2ljDWt9lYaJ7U4+mtwzjznLHaV/LDPXlzx4StUN5Rpkxht7x+K1oMiFjC78d5S23B77E0zzeaF1E4TTl3afJr5AA8wMgyQmhAdB04t89/1O/w1cDnyilFU=}'
+//         },
+//         url: 'https://api.line.me/v2/bot/message/push',
+//         method: 'POST',
+//         body: data,
+//         json: true
+//     }, function (err, res, body) {
+//         if (err) console.log('error')
+//         if (res) console.log('success')
+//         if (body) console.log(body)
+//     })
+// }
+
+// function server() {
+//     var sql = require("mssql");
+
+//     // config for your database
+//     var config = {
+//         user: 'sa',
+//         password: 'a@12345',
+//         server: 'localhost',
+//         database: 'linebot'
+//     };
+
+//     // connect to your database
+//     sql.connect(config, function (err) {
+
+//         if (err) console.log(err);
+
+//         // create Request object
+//         var request = new sql.Request();
+
+//         // query to the database and get the records
+//         request.query('select * from lineuser', function (err, recordset) {
+
+//             if (err) console.log(err)
+
+//             // send records as a response
+//             // res.send(recordset);
+//             const response = recordset;
+//             // res.send(response.recordset[0].userid);
+//             userid = response.recordset[0].userid;
+//         });
+//     });
+// }
+
+// // var db = require('./db');
+
+// app.get('/sender', function (req, res) {
+//     res.sendfile('public/send.html');
+// });
+
+// app.get('/send_save', function (req, res) {
+//     console.log(req.body.id)
+//     console.log(req.body.title);
+//     console.log(req.body.content);
+//     console.log("music");
+//     res.contentType('json');
+//     res.send({ some: JSON.stringify({ response: 'json' }) });
+// });
+
+// app.listen(3000);
+
+const express = require('express');
+const app = express();
+app.listen(process.env.PORT || 3000, () => {
+    console.log('Connected!');
 })
-app.listen(port)
-console.log("****88***" + port);
-function PushMessage() {
-    let data = {
-        to: 'U164d3cc6875a1c39f0ef0d2f40edf2a4',
-        messages: [
-            {
-                "type": "text",
-                "text": "Music"
-            }
-        ]
-    }
-
-    request({
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer {M9tAyRc6RQCCq0gJ7He0lZV9LrUYz/+7IqBgIdGGWuMBcQpmkxxlD2ljDWt9lYaJ7U4+mtwzjznLHaV/LDPXlzx4StUN5Rpkxht7x+K1oMiFjC78d5S23B77E0zzeaF1E4TTl3afJr5AA8wMgyQmhAdB04t89/1O/w1cDnyilFU=}'
-        },
-        url: 'https://api.line.me/v2/bot/message/push',
-        method: 'POST',
-        body: data,
-        json: true
-    }, function (err, res, body) {
-        if (err) console.log('error')
-        if (res) console.log('success')
-        if (body) console.log(body)
-    })
-}
-
-function reply(sender, text) {
-    console.log("-----in--1--");
-
-    let data = {
-        to: sender,
-        messages: [
-            {
-                "type": "text",
-                "text": text
-            }
-        ]
-    }
-
-    console.log("-----in--2--");
-    request({
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer {M9tAyRc6RQCCq0gJ7He0lZV9LrUYz/+7IqBgIdGGWuMBcQpmkxxlD2ljDWt9lYaJ7U4+mtwzjznLHaV/LDPXlzx4StUN5Rpkxht7x+K1oMiFjC78d5S23B77E0zzeaF1E4TTl3afJr5AA8wMgyQmhAdB04t89/1O/w1cDnyilFU=}'
-        },
-        url: 'https://api.line.me/v2/bot/message/push',
-        method: 'POST',
-        body: data,
-        json: true
-    }, function (err, res, body) {
-        if (err) console.log('error')
-        if (res) console.log('success')
-        if (body) console.log(body)
-    })
-}
-
-function server() {
-    var sql = require("mssql");
-
-    // config for your database
-    var config = {
-        user: 'sa',
-        password: 'a@12345',
-        server: 'localhost',
-        database: 'linebot'
-    };
-
-    // connect to your database
-    sql.connect(config, function (err) {
-
-        if (err) console.log(err);
-
-        // create Request object
-        var request = new sql.Request();
-
-        // query to the database and get the records
-        request.query('select * from lineuser', function (err, recordset) {
-
-            if (err) console.log(err)
-
-            // send records as a response
-            // res.send(recordset);
-            const response = recordset;
-            // res.send(response.recordset[0].userid);
-            userid = response.recordset[0].userid;
-        });
-    });
-}
-
-// var db = require('./db');
-
-app.get('/sender', function (req, res) {
-    res.sendfile('public/send.html');
-});
-
-app.get('/send_save', function (req, res) {
-    console.log(req.body.id)
-    console.log(req.body.title);
-    console.log(req.body.content);
-    console.log("music");
-    res.contentType('json');
-    res.send({ some: JSON.stringify({ response: 'json' }) });
-});
-
-app.listen(3000);
+// let request = require('request');
+// var token = 'api_key'
+// var imagesURL = [];
+// function getRandomImages() {
+//   let randomIndex = Math.floor((Math.random() * (100 - 5)));
+//   request({
+//     url: `https://graph.facebook.com/v2.9/323925094473196/photos/`,
+//     qs: {
+//       fields: "images",
+//       limit: 5,
+//       offset: randomIndex,
+//       access_token: token
+//     },
+//     method: "GET"
+//   }, (error, res, body) => {
+//     if (error) { console.error(error); }
+//     var rs = JSON.parse(body);
+//     imagesURL = rs.data.map(data => data.images[0].source);
+//   })
+// };
+app.get(`/`, (req, res) => {
+    res.send('Hello');
+})
+app.post('/geta', (req, res) => {
+    console.log("i'm taked");
+    //   getRandomImages();
+    setTimeout(() => {
+        console.log('Get imagesURL successful');
+        res.send("imagesURL");
+    }, 2000)
+})
 
