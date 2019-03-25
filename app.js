@@ -281,8 +281,6 @@ app.post('/geta', (req, res) => {
         console.log('****************** successful************');
         res.send("imagesURL");
     }, 2000)
-
-
 })
 
 function PushMessage() {
