@@ -285,30 +285,30 @@ app.post('/geta', (req, res) => {
 
 })
 
-function PushMessage() {
-    let data = {
-        to: 'U164d3cc6875a1c39f0ef0d2f40edf2a4',
-        messages: [
-            {
-                "type": "text",
-                "text": "Music"
-            }
-        ]
-    }
+// function PushMessage() {
+//     let data = {
+//         to: 'U164d3cc6875a1c39f0ef0d2f40edf2a4',
+//         messages: [
+//             {
+//                 "type": "text",
+//                 "text": "Music"
+//             }
+//         ]
+//     }
 
-    request({
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer {M9tAyRc6RQCCq0gJ7He0lZV9LrUYz/+7IqBgIdGGWuMBcQpmkxxlD2ljDWt9lYaJ7U4+mtwzjznLHaV/LDPXlzx4StUN5Rpkxht7x+K1oMiFjC78d5S23B77E0zzeaF1E4TTl3afJr5AA8wMgyQmhAdB04t89/1O/w1cDnyilFU=}'
-        },
-        url: 'https://api.line.me/v2/bot/message/push',
-        method: 'POST',
-        body: data,
-        json: true
-    }, function (err, res, body) {
-        if (err) console.log('error')
-        if (res) console.log('success')
-        if (body) console.log(body)
-    })
-}
+//     request({
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': 'Bearer {M9tAyRc6RQCCq0gJ7He0lZV9LrUYz/+7IqBgIdGGWuMBcQpmkxxlD2ljDWt9lYaJ7U4+mtwzjznLHaV/LDPXlzx4StUN5Rpkxht7x+K1oMiFjC78d5S23B77E0zzeaF1E4TTl3afJr5AA8wMgyQmhAdB04t89/1O/w1cDnyilFU=}'
+//         },
+//         url: 'https://api.line.me/v2/bot/message/push',
+//         method: 'POST',
+//         body: data,
+//         json: true
+//     }, function (err, res, body) {
+//         if (err) console.log('error')
+//         if (res) console.log('success')
+//         if (body) console.log(body)
+//     })
+// }
 
