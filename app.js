@@ -274,10 +274,10 @@ app.get(`/`, (req, res) => {
     res.send('Hello');
 })
 app.get('/geta', (req, res) => {
-    console.log("i'm taked");
+    console.log("aaaaaaaaaaaaaaa");
     //   getRandomImages();
     setTimeout(() => {
-        console.log('Get imagesURL successful');
+        console.log('****************** successful************');
         res.send("imagesURL");
     }, 2000)
 })
