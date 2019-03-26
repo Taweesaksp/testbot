@@ -248,11 +248,11 @@
 const express = require('express');
 const app = express();
 app.listen(process.env.PORT || 3000, () => {
-    console.log('Connected!');
+    console.log('Connected123456789!');
 })
 // let request = require('request');
 // var token = 'api_key'
-// var imagesURL = [];
+// var imagesURL=[];
 // function getRandomImages() {
 //   let randomIndex = Math.floor((Math.random() * (100 - 5)));
 //   request({
@@ -273,40 +273,12 @@ app.listen(process.env.PORT || 3000, () => {
 app.get(`/`, (req, res) => {
     res.send('Hello');
 })
-app.get('/geta', (req, res) => {
-    console.log("bbbbbbbbbbbb");
-    //   getRandomImages();
-    // PushMessage();
+app.post('/geta', (req, res) => {
+    console.log("++++++++i'm taked+++++++++");
+    getRandomImages();
     setTimeout(() => {
-        console.log('****************** successful loop************');
+        console.log('****Get imagesURL successful*****');
         res.send("imagesURL");
     }, 2000)
 })
-
-function PushMessage() {
-    let data = {
-        to: 'U164d3cc6875a1c39f0ef0d2f40edf2a4',
-        messages: [
-            {
-                "type": "text",
-                "text": "Music"
-            }
-        ]
-    }
-
-    request({
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer {M9tAyRc6RQCCq0gJ7He0lZV9LrUYz/+7IqBgIdGGWuMBcQpmkxxlD2ljDWt9lYaJ7U4+mtwzjznLHaV/LDPXlzx4StUN5Rpkxht7x+K1oMiFjC78d5S23B77E0zzeaF1E4TTl3afJr5AA8wMgyQmhAdB04t89/1O/w1cDnyilFU=}'
-        },
-        url: 'https://api.line.me/v2/bot/message/push',
-        method: 'POST',
-        body: data,
-        json: true
-    }, function (err, res, body) {
-        if (err) console.log('error')
-        if (res) console.log('success')
-        if (body) console.log(body)
-    })
-}
 
