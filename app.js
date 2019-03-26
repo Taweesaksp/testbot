@@ -273,12 +273,12 @@ app.listen(process.env.PORT || 3000, () => {
 app.get(`/`, (req, res) => {
     res.send('Hello');
 })
-app.get('/geta', (req, res) => {
-    console.log("aaaaaaaaaaaaaaa");
+app.post('/geta', (req, res) => {
+    console.log("bbbbbbbbbbbb");
     //   getRandomImages();
     // PushMessage();
     setTimeout(() => {
-        console.log('****************** successful************');
+        console.log('****************** successful loop************');
         res.send("imagesURL");
     }, 2000)
 })
