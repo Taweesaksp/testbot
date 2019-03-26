@@ -270,12 +270,12 @@ app.listen(process.env.PORT || 3000, () => {
 //     imagesURL = rs.data.map(data => data.images[0].source);
 //   })
 // };
-app.get(`/`, (req, res) => {
+app.get("/", (req, res) => {
     res.send('Hello');
 })
-app.post('/geta', (req, res) => {
+app.post("/geta", (req, res) => {
     console.log("++++++++i'm taked+++++++++");
-    getRandomImages();
+    // getRandomImages();
     setTimeout(() => {
         console.log('****Get imagesURL successful*****');
         res.send("imagesURL");
