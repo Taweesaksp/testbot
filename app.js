@@ -248,7 +248,7 @@
 const express = require('express');
 const app = express();
 app.listen(process.env.PORT || 3000, () => {
-    console.log('Connected123456789!');
+    console.log('Connected555555!');
 })
 // let request = require('request');
 // var token = 'api_key'
@@ -274,20 +274,20 @@ app.get('/', (req, res) => {
     res.send('Hello');
 })
 app.post('/geta', (req, res) => {
-    console.log("++++++++i'm taked+++++++++");
+    console.log("///////////////////");
     // getRandomImages();
     setTimeout(() => {
-        console.log('****Get imagesURL successful*****');
+        console.log('***ชชช*****');
         res.send("imagesURL");
     }, 2000)
 })
 
-app.get('/geta', (req, res) => {
-    console.log("++++++++i'm taked+++++++++");
-    // getRandomImages();
-    setTimeout(() => {
-        console.log('****Get imagesURL successful*****');
-        res.send("imagesURL2");
-    }, 2000)
-})
+// app.get('/geta', (req, res) => {
+//     console.log("++++++++i'm taked+++++++++");
+//     // getRandomImages();
+//     setTimeout(() => {
+//         console.log('****Get imagesURL successful*****');
+//         res.send("imagesURL2");
+//     }, 2000)
+// })
 
