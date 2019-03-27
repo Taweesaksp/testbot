@@ -282,12 +282,12 @@ app.post('/geta', (req, res) => {
     }, 2000)
 })
 
-// app.get('/geta', (req, res) => {
-//     console.log("++++++++i'm taked+++++++++");
-//     // getRandomImages();
-//     setTimeout(() => {
-//         console.log('****Get imagesURL successful*****');
-//         res.send("imagesURL2");
-//     }, 2000)
-// })
+app.get('/geta', (req, res) => {
+    console.log("++++++++i'm taked+++++++++");
+    // getRandomImages();
+    setTimeout(() => {
+        console.log('****Get imagesURL successful*****');
+        res.send("imagesURL2");
+    }, 2000)
+})
 
