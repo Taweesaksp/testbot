@@ -273,7 +273,7 @@ app.listen(process.env.PORT || 3000, () => {
 app.get('/', (req, res) => {
     res.send('Hello');
 })
-app.get('/geta', (req, res) => {
+app.post('/geta', (req, res) => {
     console.log("///////////////////");
     // getRandomImages();
     setTimeout(() => {
